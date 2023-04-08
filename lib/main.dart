@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:learning/Pages/login_page.dart';
-
-import 'Pages/home_page.dart';
+import 'package:learning/view_models/app_view_model.dart';
+import 'package:learning/views/task_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => AppViewModel(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.amber),
-      routes: {"/": (context) => LoginPage(), "/home": (context) => HomePage()},
+    return const MaterialApp(
+      home: TaskPage(),
     );
   }
 }
